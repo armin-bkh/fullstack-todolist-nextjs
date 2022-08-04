@@ -8,7 +8,8 @@
       "@/api/*": ["./pages/api/*"],
       "@/models/*": ["./server/models/*"],
       "@/serverUtils/*": ["./server/utils/*"],
-      "@/styles/*": ["./styles/*"]
+      "@/styles/*": ["./styles/*"],
+      "@/types/*": ["./types/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

@@ -1,5 +1,6 @@
-import { useTheme } from "@/containers/Providers/ThemeProvider";
 import { NextPage } from "next";
+
+import { useTheme } from "@/containers/Providers/ThemeProvider";
 
 const Home: NextPage = () => {
   const { handleToggleTheme, theme } = useTheme();
