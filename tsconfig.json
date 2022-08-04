@@ -9,7 +9,8 @@
       "@/models/*": ["./server/models/*"],
       "@/serverUtils/*": ["./server/utils/*"],
       "@/styles/*": ["./styles/*"],
-      "@/types/*": ["./types/*"]
+      "@/types/*": ["./types/*"],
+      "@/services/*": ["./services/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
