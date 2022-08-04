@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
+@layer components {
+  body {
+    @apply bg-slate-50 dark:bg-slate-800;
+  }
+}
 @tailwind utilities;
