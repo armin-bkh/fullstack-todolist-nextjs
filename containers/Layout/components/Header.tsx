@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ChangeTheme from "@/containers/Layout/components/ChangeTheme";
 
 const navLinks = [
   {
@@ -42,6 +43,7 @@ function Header() {
           ))}
         </ul>
       </nav>
+      <ChangeTheme />
     </header>
   );
 }

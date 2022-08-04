@@ -1,15 +1,18 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { NextPage } from "next";
+
 import Input from "@/components/Input/Input";
 import { postNewTodo } from "services/postNewTodo";
+import { useRouter } from "next/router";
 
 const initialData = {
   title: "",
   description: "",
 };
 
-const AddTodoPage: NextPage = () => {
+const AddTodoPage = () => {
   const [formData, setFormData] = useState(initialData);
+  const router = useRouter();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,6 +29,7 @@ const AddTodoPage: NextPage = () => {
       try {
         await postNewTodo(formData);
         setFormData(initialData);
+        router.replace("/");
       } catch (error) {
         console.log(error);
       }
@@ -34,13 +38,17 @@ const AddTodoPage: NextPage = () => {
 
   return (
     <main className="flex justify-center items-center min-h-[90vh]">
-      <form className="flex flex-col" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col bg-white dark:bg-slate-700 p-5 shadow rounded-md"
+        onSubmit={handleSubmit}
+      >
         <Input
           name="title"
           lbl="Title"
           type="text"
           onChange={handleChange}
           value={formData.title}
+          placeholder="title"
         />
         <Input
           name="description"
@@ -49,6 +57,7 @@ const AddTodoPage: NextPage = () => {
           onChange={handleChange}
           value={formData.description}
           optional
+          placeholder="description"
         />
         <button
           type="submit"

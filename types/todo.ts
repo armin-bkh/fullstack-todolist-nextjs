@@ -1,7 +1,5 @@
-import { ObjectId } from "mongoose";
-
 export type TTodo = {
-  _id: ObjectId;
+  _id: string | number;
   title: string;
   description: string;
   isCompleted: boolean;

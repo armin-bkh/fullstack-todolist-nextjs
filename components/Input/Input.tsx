@@ -7,6 +7,7 @@ type InputProps = {
   lbl: string;
   type: string;
   optional?: boolean;
+  placeholder?: string;
 };
 
 function Input(props: InputProps) {
@@ -16,14 +17,16 @@ function Input(props: InputProps) {
 
   return (
     <fieldset className="flex flex-col mb-5">
-      <label htmlFor={name}>
+      <label className="dark:text-white" htmlFor={name}>
         {lbl}:
         {optional && (
           <span className="text-slate-400 text-xs ml-2">(optional)</span>
         )}
       </label>
       <Component
-        className="shadow rounded-md mt-3 outline-none px-3 py-1"
+        className={`shadow rounded-md mt-3 outline-none px-3 py-1 dark:bg-slate-500 dark:text-white text-sm resize-none ${
+          Component === "textarea" && "h-24"
+        }`}
         id={name}
         name={name}
         {...restProps}

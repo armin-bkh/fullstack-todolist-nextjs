@@ -1,14 +1,31 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 
 import { useTheme } from "@/containers/Providers/ThemeProvider";
+import { getAllTodos } from "@/serverUtils/getAllTodos";
+import { TTodo } from "@/types/todo";
+import TodosList from "@/components/TodosList/TodosList";
 
-const HomePage: NextPage = () => {
-  const { handleToggleTheme, theme } = useTheme();
+export type HomePageProps = {
+  todos: TTodo[];
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const todos = await getAllTodos();
+
+  return {
+    props: {
+      todos: JSON.parse(JSON.stringify(todos)),
+    },
+  };
+};
+
+const HomePage = (props: HomePageProps) => {
+  const { todos } = props;
+
   return (
-    <div className="text-blue-500 dark:text-red-500">
-      hello world
-      <button onClick={handleToggleTheme}>current theme: {theme}</button>
-    </div>
+    <main className="flex justify-center items-center h-[90vh] p-5">
+      <TodosList todos={todos} />
+    </main>
   );
 };
 
