@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 
 import { getTodoById } from "@/serverUtils/getTodoById";
 import { TTodo } from "@/types/todo";
+import connectDB from "@/serverUtils/connectDB";
 
 type TodoDetailPageProps = {
   todo: TTodo;
@@ -10,6 +11,7 @@ type TodoDetailPageProps = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { todoId } = context.query;
+  await connectDB();
   const todo = await getTodoById(todoId);
 
   return {

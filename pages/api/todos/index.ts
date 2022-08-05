@@ -4,6 +4,9 @@ import Todo from "@/models/todo";
 import { TTodo } from "@/types/todo";
 import { methods } from "@/serverUtils/methods";
 import { getAllTodos } from "@/serverUtils/getAllTodos";
+import connectDB from "@/serverUtils/connectDB";
+
+connectDB();
 
 export default async function handler(
   req: NextApiRequest,

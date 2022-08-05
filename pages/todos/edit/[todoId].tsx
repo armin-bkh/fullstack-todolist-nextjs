@@ -13,6 +13,7 @@ type EditTodoPageProps = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { todoId } = context.query;
+  await connectDB();
   const todo = await getTodoById(todoId);
 
   return {

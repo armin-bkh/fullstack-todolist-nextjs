@@ -6,12 +6,15 @@ import { TTodo } from "@/types/todo";
 import TodoList from "@/components/TodoList/TodoList";
 import { deleteTodo } from "@/services/deleteTodo";
 import { checkTodo } from "@/services/checkTodo";
+import connectDB from "@/serverUtils/connectDB";
 
 export type HomePageProps = {
   todos: TTodo[];
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  await connectDB();
+
   const todos = await getAllTodos();
 
   return {
