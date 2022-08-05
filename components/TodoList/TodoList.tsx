@@ -4,7 +4,7 @@ import { TTodo } from "@/types/todo";
 import TodoItem from "@/components/TodoItem/TodoItem";
 
 type TodoListProps = {
-  todos: TTodo[];
+  todos: TTodo[] | null;
   onDelete: (id: number | string) => void;
   onCheck: (id: number | string) => void;
 };
@@ -15,7 +15,7 @@ function TodoList(props: TodoListProps) {
   return (
     <section className="w-full md:w-2/5">
       <ul>
-        {todos.map((todo) => (
+        {todos?.map((todo) => (
           <TodoItem
             key={todo._id}
             todo={todo}

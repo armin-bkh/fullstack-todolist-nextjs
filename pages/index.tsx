@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 
 import { getAllTodos } from "@/serverUtils/getAllTodos";
@@ -7,24 +7,30 @@ import TodoList from "@/components/TodoList/TodoList";
 import { deleteTodo } from "@/services/deleteTodo";
 import { checkTodo } from "@/services/checkTodo";
 import connectDB from "@/serverUtils/connectDB";
+import RenderIf from "@/components/RenderIf/RenderIf";
+import { getSession } from "next-auth/react";
+import { getTodos } from "@/services/getTodos";
 
 export type HomePageProps = {
   todos: TTodo[];
+  error?: string;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   connectDB();
+  const session = await getSession(context);
   const todos = await getAllTodos();
 
   return {
     props: {
-      todos: JSON.parse(JSON.stringify(todos)),
+      todos: session ? JSON.parse(JSON.stringify(todos)) : null,
+      error: !session ? "sorry you should login first" : null,
     },
   };
 };
 
 const HomePage = (props: HomePageProps) => {
-  const { todos } = props;
+  const { todos, error } = props;
 
   const [todoList, setTodoList] = useState(todos);
 
@@ -48,11 +54,13 @@ const HomePage = (props: HomePageProps) => {
 
   return (
     <main className="flex justify-center items-center h-[90vh] p-5">
-      <TodoList
-        todos={todoList}
-        onDelete={handleDeleteTodo}
-        onCheck={handleCheckedTodo}
-      />
+      <RenderIf renderIf={!!todoList} renderElse={<p>{error}</p>}>
+        <TodoList
+          todos={todoList}
+          onDelete={handleDeleteTodo}
+          onCheck={handleCheckedTodo}
+        />
+      </RenderIf>
     </main>
   );
 };
