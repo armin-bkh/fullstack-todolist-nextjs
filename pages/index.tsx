@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps } from "next";
 
-import { useTheme } from "@/containers/Providers/ThemeProvider";
 import { getAllTodos } from "@/serverUtils/getAllTodos";
 import { TTodo } from "@/types/todo";
 import TodoList from "@/components/TodoList/TodoList";

@@ -27,9 +27,13 @@ export default async function handler(
     const todos = await getAllTodos();
     return res.status(200).json({ todos });
   } else if (method === methods.PUT) {
-    console.log(body, "body is here");
     const todo = await getTodoById(todoId);
-    todo.isCompleted = !todo.isCompleted;
+    if (body) {
+      todo.title = body.title;
+      todo.description = body.description;
+    } else {
+      todo.isCompleted = !todo.isCompleted;
+    }
     await todo.save();
     const todos = await getAllTodos();
     return res.status(201).json({ todos });
