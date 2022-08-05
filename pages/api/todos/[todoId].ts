@@ -31,6 +31,7 @@ export default async function handler(
     if (body) {
       todo.title = body.title;
       todo.description = body.description;
+      todo.isCompleted = body.isCompleted;
     } else {
       todo.isCompleted = !todo.isCompleted;
     }

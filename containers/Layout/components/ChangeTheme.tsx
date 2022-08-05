@@ -5,7 +5,11 @@ import { useTheme } from "@/containers/Providers/ThemeProvider";
 function ChangeTheme() {
   const { handleToggleTheme, theme } = useTheme();
 
-  return <button onClick={handleToggleTheme}>curr theme: {theme}</button>;
+  return (
+    <button onClick={handleToggleTheme} className="dark:text-white">
+      curr theme: {theme}
+    </button>
+  );
 }
 
 export default ChangeTheme;

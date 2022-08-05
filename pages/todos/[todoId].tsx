@@ -24,17 +24,19 @@ function TodoDetailPage(props: TodoDetailPageProps) {
 
   return (
     <main className="flex justify-center items-center min-h-[90vh]">
-      <section className="bg-white shadow-md w-full md:w-1/3 rounded-md p-5">
+      <section className="bg-white shadow-md w-full md:w-1/3 rounded-md p-5 ] dark:bg-slate-700">
         {todo.isCompleted && (
           <span className="text-violet-400 block text-right">completed</span>
         )}
         <div className="mb-7">
-          <span className="mb-3">Title:</span>
-          <p className="bg-slate-300 rounded-sm px-3 py-1">{todo.title}</p>
+          <span className="mb-3 dark:text-white">Title:</span>
+          <p className="bg-slate-300 rounded-sm px-3 py-1 dark:bg-slate-500 dark:text-white">
+            {todo.title}
+          </p>
         </div>
         <div>
-          <span className="mb-3">Description:</span>
-          <p className="bg-slate-300 rounded-sm px-3 py-1">
+          <span className="mb-3 dark:text-white">Description:</span>
+          <p className="bg-slate-300 rounded-sm px-3 py-1 dark:bg-slate-500 dark:text-white">
             {todo.description}
           </p>
         </div>
