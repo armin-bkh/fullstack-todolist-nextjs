@@ -13,8 +13,7 @@ export type HomePageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  await connectDB();
-
+  connectDB();
   const todos = await getAllTodos();
 
   return {

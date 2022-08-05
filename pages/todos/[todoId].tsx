@@ -11,7 +11,7 @@ type TodoDetailPageProps = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { todoId } = context.query;
-  await connectDB();
+  connectDB();
   const todo = await getTodoById(todoId);
 
   return {

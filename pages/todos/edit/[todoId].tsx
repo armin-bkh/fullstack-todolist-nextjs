@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { editTodo } from "@/services/editTodo";
 import { TTodo } from "@/types/todo";
 import { getTodoById } from "@/serverUtils/getTodoById";
+import connectDB from "@/serverUtils/connectDB";
 
 type EditTodoPageProps = {
   todo: TTodo;
@@ -13,7 +14,7 @@ type EditTodoPageProps = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { todoId } = context.query;
-  await connectDB();
+  connectDB();
   const todo = await getTodoById(todoId);
 
   return {
