@@ -7,6 +7,7 @@
       "@/pages/*": ["./pages/*"],
       "@/api/*": ["./pages/api/*"],
       "@/models/*": ["./server/models/*"],
+      "@/serverLib/*": ["./server/lib/*"],
       "@/serverUtils/*": ["./server/utils/*"],
       "@/styles/*": ["./styles/*"],
       "@/types/*": ["./types/*"],

@@ -15,7 +15,11 @@ function Profile() {
     return <p>loading..</p>;
   }
 
-  return <div>{session?.user?.name} welcome to todolist app</div>;
+  return (
+    <div>
+      {session?.user?.name} {session.user.id} welcome to todolist app
+    </div>
+  );
 }
 
 export default Profile;

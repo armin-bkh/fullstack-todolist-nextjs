@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 
 import { getAllTodos } from "@/serverUtils/getAllTodos";
 import { TTodo } from "@/types/todo";
@@ -8,7 +9,6 @@ import { deleteTodo } from "@/services/deleteTodo";
 import { checkTodo } from "@/services/checkTodo";
 import connectDB from "@/serverUtils/connectDB";
 import RenderIf from "@/components/RenderIf/RenderIf";
-import { getSession } from "next-auth/react";
 import { getTodos } from "@/services/getTodos";
 
 export type HomePageProps = {
